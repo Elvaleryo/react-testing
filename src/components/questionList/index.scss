@@ -1,0 +1,19 @@
+
+.questions {
+  &__wrap {
+    border-bottom: 1px solid #dfdfdf;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  &__del-ico {
+    float: right;
+    margin-right: -20px;
+  }
+  &__title {
+    margin: 0;
+    margin-bottom: 20px;
+  }
+  &__answer {
+    margin-bottom: 10px;
+  }
+}

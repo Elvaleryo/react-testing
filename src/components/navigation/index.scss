@@ -1,0 +1,13 @@
+.nav {
+  &__show {
+    padding: 10px;
+  }
+  &__close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 10px;
+    transform: translateX(100%);
+    cursor: pointer;
+  }
+}
