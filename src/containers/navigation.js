@@ -32,6 +32,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 
+
 const NavigateView = compose(withFirebase,withRouter)(NavigationPage);
 
 export const Navigation = connect(mapStateToProps, mapDispatchToProps)(NavigateView);
