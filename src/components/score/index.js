@@ -12,7 +12,7 @@ export default class Score extends Component {
 
     render() {
 
-        const { score , onClick,questions, userAnswers, history } = this.props;
+        const { score , onClick, questions, userAnswers, history } = this.props;
 
         let answList = questions.map((question, i) => {
             let answs = question.answers.map((item) => {

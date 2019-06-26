@@ -31,7 +31,6 @@ export default class SignInForm extends Component {
         return (
 
             <Grommet theme={customTheme}>
-                <h1>SignIn</h1>
                 <Box
                     direction="row-responsive"
                     justify="center"
@@ -46,6 +45,8 @@ export default class SignInForm extends Component {
                          pad='large'
                          alignContent='center'
                          background="light-2">
+                        <h1>SignIn</h1>
+
                         <form  onSubmit={(event) => this.onSubmit(event,this.state.email,this.state.password, this.fb, history)}>
                             <TextInput
                                 className="sign__input"
@@ -63,6 +64,7 @@ export default class SignInForm extends Component {
                                 placeholder='Password'
                                 size='medium'
                                 margin="small"
+                                type="password"
                                 onChange={this.onChange}
                             />
                             <Button primary

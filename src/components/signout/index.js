@@ -12,7 +12,7 @@ export default class SignOutButton extends Component {
     }
     render() {
         return(
-            <Button onClick={(event) => this.signOut(this.fb,this.history)}
+            <Button onClick={() => this.signOut(this.fb,this.history)}
                 hoverIndicator={{ background: 'light-5' }}>
                 <Box pad={{ horizontal: 'medium', vertical: 'small' }}>
                     <Text size='large'>

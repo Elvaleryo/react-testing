@@ -15,13 +15,15 @@ export default class Testing extends Component {
 
     render() {
 
-        const questions = this.props.answersList;
-        const selected = this.props.selected;
-        const history = this.props.history;
+        const {answersList, selected, history} = this.props;
 
-        let answList = questions.map((question, i) => {
-            const currentSelected = !!selected ? selected.find(item => item.questionIndex === i) : false;
-            let tempChecked = !!currentSelected ? currentSelected.answerIndex : false;
+        let answList = answersList.map((question, i) => {
+
+
+            const currentSelected = selected.length ? selected.find(item => item.questionIndex === i) : false;
+
+            const tempChecked = currentSelected ? currentSelected.answerIndex : false;
+
             let answs = question.answers.map((item) => {
                 let key = uuidv4();
                 return (
@@ -62,7 +64,7 @@ export default class Testing extends Component {
                          pad='large'
                          alignContent='center'
                          background="light-2">
-                        <form  onSubmit={(event) => this.submitAnswers(event,selected,questions.length,history)}>
+                        <form  onSubmit={(event) => this.submitAnswers(event,selected,answersList.length,history)}>
 
                             {answList}
 

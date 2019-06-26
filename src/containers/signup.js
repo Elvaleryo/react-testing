@@ -1,16 +1,17 @@
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
+import {withRouter} from "react-router-dom";
+
 
 import { signUp } from '../actions/signup';
 import SignUpPage from '../components/signup';
 
 
 import { withFirebase } from '../firebase';
-import {withRouter} from "react-router-dom";
 
 
 
-const mapStateToProps = (store, ownProps) => {
+const mapStateToProps = (store) => {
     return {
         error: store.errorSignUp,
     }

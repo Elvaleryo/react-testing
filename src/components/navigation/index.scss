@@ -10,4 +10,10 @@
     transform: translateX(100%);
     cursor: pointer;
   }
+  &__wrap {
+    span,
+    a {
+      display: block;
+    }
+  }
 }

@@ -21,20 +21,22 @@ class NavigationAuth extends Component {
             return(
                 <Layer position='left' full='vertical' modal={false} plain={true} onClickOutside={this.onClose}>
                     <Close className="nav__close" onClick={this.onClose}/>
-                    <Box background='brand' fill='vertical'>
+                    <Box background='brand' fill='vertical'  className="nav__wrap">
                         <Box pad={{ horizontal: 'medium', vertical: 'small' }}>
                             <Text size='large'>Menu</Text>
                         </Box>
 
 
-                        <Button
-                            hoverIndicator={{ background: 'light-5' }} onClick={this.onClose}>
+
                             <Box pad={{ horizontal: 'medium', vertical: 'small' }}>
-                                <Text size='large'>
-                                    <Link to={ROUTES.HOME}>Home</Link>
-                                </Text>
+                                <Button
+                                    hoverIndicator={{ background: 'light-5' }} onClick={this.onClose}>
+                                    <Text size='large'>
+                                        <Link to={ROUTES.HOME}>Home</Link>
+                                    </Text>
+                                </Button>
+
                             </Box>
-                        </Button>
 
 
                         <Button
@@ -80,7 +82,7 @@ class NavigationAuth extends Component {
             return(
                 <Layer position='left' full='vertical' modal={false} plain={true} onClickOutside={this.onClose}>
                     <Close className="nav__close" onClick={this.onClose}/>
-                    <Box background='brand' fill='vertical'>
+                    <Box background='brand' fill='vertical'  className="nav__wrap">
                         <Box pad={{ horizontal: 'medium', vertical: 'small' }}>
                             <Text size='large'>Menu</Text>
                         </Box>
@@ -162,12 +164,9 @@ class NavigationNonAuth extends Component {
 
 export default class NavigationPage extends Component {
     render() {
-        let locStore = JSON.parse(localStorage.getItem('state'));
-        let storageLogged = locStore.logged;
-        let storageAdmin = locStore.admin;
 
-        let authUs =  !!storageLogged ? storageLogged : this.props.logged;
-        let admin = !!storageAdmin ? storageAdmin : this.props.admin;
+        let authUs =  this.props.logged;
+        let admin = this.props.admin;
 
 
         const { showMenu, hideMenu, menuOpen } = this.props;

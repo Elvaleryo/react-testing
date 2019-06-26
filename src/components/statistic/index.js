@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import uuidv4 from 'uuid/v4';
+
 import {  Box, Grommet,Table, TableBody, TableCell, TableHeader, TableRow } from 'grommet';
 import {customTheme} from '../groomet-themes';
 
@@ -13,10 +15,9 @@ export default class Statistic extends Component {
         const {history, admin, allHistory} = this.props;
 
         let historyList = history.map((item, i) => {
-
-
+            let key = uuidv4();
             return (
-                <TableRow>
+                <TableRow key={key}>
                     <TableCell scope="row">
                         {item.date}
                     </TableCell>
@@ -26,10 +27,9 @@ export default class Statistic extends Component {
         });
 
         let adminHistoryList = allHistory.map((item, i) => {
-
-
+            let key = uuidv4();
             return (
-                <TableRow>
+                <TableRow key={key}>
                     <TableCell scope="row">
                         {item.user}
                     </TableCell>
@@ -41,7 +41,8 @@ export default class Statistic extends Component {
             );
         });
 
-        if (admin) {
+        let statisticList = admin ? adminHistoryList : historyList;
+
             return (
                 <Grommet theme={customTheme}>
                     <Box
@@ -61,48 +62,11 @@ export default class Statistic extends Component {
                             <Table>
                                 <TableHeader>
                                     <TableRow>
-                                        <TableCell scope="col" border="bottom">
-                                            User
-                                        </TableCell>
-                                        <TableCell scope="col" border="bottom">
-                                            Date
-                                        </TableCell>
-                                        <TableCell scope="col" border="bottom">
-                                            Score
-                                        </TableCell>
-                                    </TableRow>
-                                </TableHeader>
-                                <TableBody>
-
-                                    {adminHistoryList}
-
-                                </TableBody>
-                            </Table>
-
-                        </Box>
-                    </Box>
-                </Grommet>
-            )
-        } else {
-            return (
-                <Grommet theme={customTheme}>
-                    <Box
-                        direction="row-responsive"
-                        justify="center"
-                        align="center"
-                        pad="xlarge"
-                        background="light"
-                        gap="medium"
-                    >
-                        <Box align='center'
-                             width='medium'
-                             justify='center'
-                             pad='large'
-                             alignContent='center'
-                             background="light-2">
-                            <Table>
-                                <TableHeader>
-                                    <TableRow>
+                                        {admin && (
+                                            <TableCell scope="col" border="bottom">
+                                                User
+                                            </TableCell>
+                                        )}
                                         <TableCell scope="col" border="bottom">
                                             Date
                                         </TableCell>
@@ -112,9 +76,7 @@ export default class Statistic extends Component {
                                     </TableRow>
                                 </TableHeader>
                                 <TableBody>
-
-                                    {historyList}
-
+                                    {statisticList}
                                 </TableBody>
                             </Table>
 
@@ -122,7 +84,7 @@ export default class Statistic extends Component {
                     </Box>
                 </Grommet>
             )
-        }
+
 
 
     }

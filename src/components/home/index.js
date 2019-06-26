@@ -76,9 +76,7 @@ export default class Home extends Component {
 
         const { history, logged } = this.props;
 
-        let locStore = JSON.parse(localStorage.getItem('state'));
-        let storageLogged = locStore.logged;
-        let userLogged = !!storageLogged ? storageLogged : logged;
+        let userLogged = logged;
 
 
         let home = userLogged ? <HomeUnLogged history={history}/> : <HomeLogged history={history}/>;

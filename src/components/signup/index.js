@@ -68,6 +68,7 @@ export default class SignUpPage extends Component {
                                 placeholder='Password'
                                 size='medium'
                                 margin="small"
+                                type="password"
                                 onChange={this.onChange}
                             />
                             <TextInput
@@ -77,6 +78,8 @@ export default class SignUpPage extends Component {
                                 placeholder='Confirm password'
                                 size='medium'
                                 margin="small"
+                                type="password"
+
                                 onChange={this.onChange}
                             />
                             <Button primary

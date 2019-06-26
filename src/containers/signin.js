@@ -1,16 +1,15 @@
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
+import {withRouter} from "react-router-dom";
 
 import { auth } from '../actions/auth';
 import SignInForm from '../components/signin';
 
-
 import { withFirebase } from '../firebase';
-import {withRouter} from "react-router-dom";
 
 
 
-const mapStateToProps = (store, ownProps) => {
+const mapStateToProps = (store) => {
     return {
         error: store.error,
         logged: store.logged

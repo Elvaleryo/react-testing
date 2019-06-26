@@ -22,8 +22,8 @@ export const auth = ( email, password, fb, history) => {
 
             })
             .catch(error => {
-                dispatch(userLogInError(error.message));
 
+                dispatch(userLogInError(error.message));
 
             });
     };

@@ -13,12 +13,13 @@ export default class Questions extends Component {
     constructor(props) {
         super(props);
         this.submitAnswers = this.props.submitAnswers;
+        this.delQuestion = this.props.delQuestion;
     }
 
     render() {
 
 
-        const { questions, history, delQuestion } = this.props;
+        const { questions, history } = this.props;
 
         let _onClick = (e) => {
             this.setState({ [e.target.name]: e.target.value });
@@ -42,7 +43,7 @@ export default class Questions extends Component {
             let key = uuidv4();
             return (
                 <div key={key} className="questions__wrap">
-                    <FormClose className="questions__del-ico" onClick={() => delQuestion(question.title)}/>
+                    <FormClose className="questions__del-ico" onClick={() => this.delQuestion(question.title)}/>
                     <h1 className="questions__title">{question.title}</h1>
                     {answs}
                 </div>

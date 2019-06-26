@@ -11,7 +11,7 @@ import uuidv4 from 'uuid/v4';
 const mapStateToProps = (store) => {
 
     return {
-        answersList: JSON.parse(localStorage.getItem('state')).questions,
+        answersList: store.questions,
         selected: store.selectedAnswers,
     }
 };

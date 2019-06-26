@@ -26,6 +26,7 @@ const mapDispatchToProps = (dispatch) => {
         hideMenu: (e) => {
             e.preventDefault();
             dispatch(menuOpen(false));
+            console.log(213123);
         }
     };
 };
