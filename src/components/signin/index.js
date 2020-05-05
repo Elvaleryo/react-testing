@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Box, TextInput, Grommet, Button, Text } from 'grommet';
 import './signin.scss';
-import {customTheme} from '../groomet-themes';
-
+import { Form, Input, Button, Row, Col } from 'antd';
 
 
 const INITIAL_STATE = {
@@ -10,14 +8,12 @@ const INITIAL_STATE = {
     password: '',
 };
 
-export default class SignInForm extends Component {
+export default class SignIn extends Component {
 
     constructor(props) {
         super(props);
-        this.onSubmit = props.onSubmit;
         this.state = { ...INITIAL_STATE };
-        this.fb = this.props.firebase;
-    }
+    };
 
     onChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
@@ -25,60 +21,70 @@ export default class SignInForm extends Component {
 
     render() {
 
-        const { error, history } = this.props;
-
+        const { error, history, onSubmit, firebase } = this.props;
 
         return (
-
-            <Grommet theme={customTheme}>
-                <Box
-                    direction="row-responsive"
-                    justify="center"
-                    align="center"
-                    pad="xlarge"
-                    background="light"
-                    gap="medium"
-                >
-                    <Box align='center'
-                         width='medium'
-                         justify='center'
-                         pad='large'
-                         alignContent='center'
-                         background="light-2">
+            <Row justify="center">
+                <Col span={8}>
+                    <div className="alignCenter">
                         <h1>SignIn</h1>
+                        <Form
+                            onFinish={(values) => onSubmit(values, firebase, history)}
+                            size="middle"
+                        >
+                            <Form.Item
+                                className="sign__input"
+                                name="email"
+                                onChange={this.onChange}
+                                required="true"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Please input your email!',
+                                    },
+                                    {
+                                        type: 'email',
+                                        message: 'The input is not valid E-mail!',
+                                    },
+                                ]}
+                            >
+                                <Input
+                                    value={this.state.email}
+                                    placeholder="Email"
+                                />
+                            </Form.Item>
 
-                        <form  onSubmit={(event) => this.onSubmit(event,this.state.email,this.state.password, this.fb, history)}>
-                            <TextInput
+                            <Form.Item
                                 className="sign__input"
-                                value={this.state.email}
-                                name='email'
-                                placeholder='Email'
-                                size='medium'
-                                margin="small"
-                                onChange={this.onChange}
-                            />
-                            <TextInput
-                                className="sign__input"
-                                value={this.state.password}
                                 name='password'
-                                placeholder='Password'
-                                size='medium'
-                                margin="small"
-                                type="password"
                                 onChange={this.onChange}
-                            />
-                            <Button primary
-                                    type="submit"
-                                    label="Sign In"
-                                    margin="small"
-                            />
-                            <Text>
-                                {<p>{error}</p>}
-                            </Text>
-                        </form>
-                    </Box>
-                </Box>
-            </Grommet>
+                                required="true"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Please input your password!',
+                                    },
+                                ]}
+                            >
+                                <Input.Password
+                                    value={this.state.password}
+                                    placeholder='Password'
+                                />
+                            </Form.Item>
+
+                            <Button
+                                type="primary"
+                                htmlType="submit"
+                            >
+                                Sign in
+                            </Button>
+                            <p>
+                                {error}
+                            </p>
+                        </Form>
+                    </div>
+                </Col>
+            </Row>
         )
     }
 }

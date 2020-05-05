@@ -1,112 +1,35 @@
 import React, { Component } from 'react';
-import { Box, Grommet, Button } from 'grommet';
-import {customTheme} from '../groomet-themes';
-import * as ROUTES from "../../constants/routes";
+import {  Row, Col } from 'antd';
 
-
-class HomeLogged extends Component{
-    render() {
-
-        const { history } = this.props;
-
-        const onClickSignIn = (e) => {
-            e.preventDefault();
-            history.push(ROUTES.SIGN_IN);
-        };
-
-        const onClickSignUp= (e) => {
-            e.preventDefault();
-            history.push(ROUTES.SIGN_UP);
-        };
-
-
-        return (
-
-            <div className='home__btn-wrap'>
-                        <Button primary
-                                type="submit"
-                                label="Sign in"
-                                margin="small"
-                                onClick={(e) => {onClickSignIn(e,history)}}
-                        />
-
-                        <Button primary
-                                type="submit"
-                                label="Sign up"
-                                margin="small"
-                                onClick={(e) => {onClickSignUp(e,history)}}
-                        />
-            </div>
-        )
-    }
-
-}
-
-
-class HomeUnLogged extends Component{
-    render() {
-
-        const { history } = this.props;
-
-        const onClick = (e) => {
-            e.preventDefault();
-            history.push(ROUTES.START_TESTING);
-        };
-
-
-        return (
-
-
-                        <Button primary
-                                type="submit"
-                                label="Start testing"
-                                margin="small"
-                                onClick={(e) => {onClick(e,history)}}
-                        />
-
-        )
-    }
-
-}
+import {HomeGuest} from './homeGuest';
+import {HomeUser} from './homeUser';
 
 
 export default class Home extends Component {
 
     render() {
 
-        const { history, logged } = this.props;
-
-        let userLogged = logged;
-
-
-        let home = userLogged ? <HomeUnLogged history={history}/> : <HomeLogged history={history}/>;
+        const { history, userLogged } = this.props;
+        const Home = userLogged ? <HomeUser history={history}/> : <HomeGuest history={history}/>;
 
         return (
-            <Grommet theme={customTheme}>
-                <Box
-                    direction="row-responsive"
-                    justify="center"
-                    align="center"
-                    pad="xlarge"
-                    background="light"
-                    gap="medium"
-                >
-                    <Box align='center'
-                         width='medium'
-                         justify='center'
-                         pad='large'
-                         alignContent='center'
-                         background="light-2">
-
-                        <h2>HELLO</h2>
-                        <h2>ITS TESTING APP</h2>
-                        { home }
-
-                    </Box>
-                </Box>
-            </Grommet>
-
-
+            <>
+                <Row align="middle">
+                    <Col span={24}>
+                        <div className="alignCenter">
+                            <h2>
+                                HELLO<br/>
+                                IT'S TESTING APP
+                            </h2>
+                        </div>
+                    </Col>
+                    <Col span={24}>
+                        <div className="alignCenter">
+                            {Home}
+                        </div>
+                    </Col>
+                </Row>
+            </>
 
         )
     }

@@ -1,23 +1,20 @@
-
 import * as TYPES from "./types";
 import {admin} from "../constants/roles";
 import * as ROUTES from "../constants/routes";
 
-
-
-export const auth = ( email, password, fb, history) => {
+export const auth = ( email, password, firebase, history) => {
     return dispatch => {
         dispatch(userAuthLoading());
 
-        fb.doSignInWithEmailAndPassword(email, password)
+        firebase.doSignInWithEmailAndPassword(email, password)
             .then(authUser => {
 
-                    let adminFlag = authUser.user.email === admin;
+                    let isAdmin = authUser.user.email === admin;
 
-                    dispatch(userAuth(true, adminFlag, email));
+                    dispatch(userAuth(true, isAdmin, email));
 
                     localStorage.setItem('logged', 1);
-                    adminFlag ? localStorage.setItem('admin', adminFlag) : localStorage.setItem('admin', '');
+                    isAdmin ? localStorage.setItem('admin', isAdmin) : localStorage.setItem('admin', '');
                     history.push(ROUTES.HOME);
 
             })
@@ -31,7 +28,7 @@ export const auth = ( email, password, fb, history) => {
 
 
 export const userAuth = (auth,admin,email) => ({
-    type:    TYPES.AUTH_CHANGED,
+    type: TYPES.AUTH_CHANGED,
     logged: auth,
     admin: admin,
     user: email,

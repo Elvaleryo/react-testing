@@ -1,6 +1,6 @@
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore, applyMiddleware } from 'redux';
-import {rootReducer }  from '../reducers';
+import { rootReducer }  from '../reducers';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import _ from 'lodash';
@@ -8,9 +8,7 @@ import _ from 'lodash';
 
 const loadState = () => {
     try {
-
         const localState = localStorage.getItem('state');
-
         if (localState === null) {
             return undefined;
         }
@@ -21,7 +19,11 @@ const loadState = () => {
 };
 const persistedState = loadState();
 
-let store = createStore(rootReducer, persistedState, composeWithDevTools(applyMiddleware(thunk, logger)));
+let store = createStore(
+    rootReducer,
+    persistedState,
+    applyMiddleware(thunk, logger)
+);
 
 store.subscribe(_.throttle(() => {
     const serializedState = JSON.stringify(store.getState());

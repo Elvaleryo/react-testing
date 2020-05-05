@@ -1,14 +1,16 @@
 {
-  "name": "money",
+  "name": "testing",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@grpc/grpc-js": "^0.7.9",
+    "antd": "^4.1.4",
     "firebase": "^5.7.0",
     "grommet": "^2.0.1",
     "grommet-icons": "^3.2.1",
-    "lodash": "^4.17.11",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
+    "lodash": "^4.17.15",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.3",
@@ -35,7 +37,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "node-sass": "^4.10.0",
+    "node-sass": "^4.13.1",
     "redux-logger": "^3.0.6",
     "sass-loader": "^7.1.0"
   }

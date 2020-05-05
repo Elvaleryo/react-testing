@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {withRouter} from "react-router-dom";
 
 import { auth } from '../actions/auth';
-import SignInForm from '../components/signin';
+import SignIn from '../components/signin';
 
 import { withFirebase } from '../firebase';
 
@@ -18,20 +18,12 @@ const mapStateToProps = (store) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-
-        onSubmit: (e,email,password,fb,history) => {
-            e.preventDefault();
-            dispatch(auth(email,password,fb,history));
+        onSubmit: (values, firebase,history) => {
+            dispatch(auth(values.email,values.password,firebase,history));
         },
-
     }
 };
 
+const SignInForm = compose(withRouter,withFirebase)(SignIn);
 
-
-const SignIn = compose(withRouter,withFirebase)(SignInForm);
-
-export const SignInPage = connect(mapStateToProps, mapDispatchToProps)(SignIn);
-
-
-
+export const SignInPage = connect(mapStateToProps, mapDispatchToProps)(SignInForm);
