@@ -12,15 +12,14 @@ import { withFirebase } from '../firebase';
 const mapStateToProps = (store) => {
     return {
         error: store.error,
-        logged: store.logged
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSubmit: (values, firebase,history) => {
-            dispatch(auth(values.email,values.password,firebase,history));
-        },
+        onSubmit: (values, firebase, history) => {
+            dispatch(auth(values.email, values.password, firebase, history));
+        }
     }
 };
 

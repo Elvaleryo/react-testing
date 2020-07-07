@@ -6,35 +6,32 @@ import { SignInPage } from '../../containers/signin';
 import { SignUp } from '../../containers/signup';
 import { StatisticPage } from '../../containers/statistic';
 import { AddQuestionPage } from '../../containers/addQuestion';
-import {TestingPage} from '../../containers/testing';
-import {ScorePage} from '../../containers/score';
-import {QuestionsPage} from '../../containers/questionList';
+import { TestingPage } from '../../containers/testing';
+import { ScorePage } from '../../containers/score';
+import { QuestionsPage } from '../../containers/questionList';
 import { Navigation } from '../../containers/navigation';
 import { HomePage } from '../../containers/home';
 
 import { withFirebase } from '../../firebase';
 
-
-import "./index.scss";
 import "antd/dist/antd.css";
+import "./index.scss";
+
 import { Layout } from 'antd';
 const { Header, Content, Footer } = Layout;
 
 
-
 class App extends Component {
-
     render() {
-
         return(
             <Router>
-                <Layout>
+                <Layout className="site-layout">
                     <Navigation  />
-                    <Layout className="site-layout">
-                        <Header className="site-layout-background" style={{ padding: 0 }}>
+                    <Layout>
+                        <Header className="site-layout_background">
                             Testing
                         </Header>
-                        <Content className="site-layout-background"
+                        <Content className="site-layout_background"
                             style={{
                                 margin: '24px 16px',
                                 padding: 24,

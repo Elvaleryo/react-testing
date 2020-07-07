@@ -2,26 +2,22 @@ import * as TYPES from "./types";
 import {admin} from "../constants/roles";
 import * as ROUTES from "../constants/routes";
 
-export const auth = ( email, password, firebase, history) => {
+export const auth = (email, password, firebase, history) => {
     return dispatch => {
         dispatch(userAuthLoading());
 
         firebase.doSignInWithEmailAndPassword(email, password)
             .then(authUser => {
+                let isAdmin = authUser.user.email === admin;
 
-                    let isAdmin = authUser.user.email === admin;
+                dispatch(userAuth(true, isAdmin, email));
 
-                    dispatch(userAuth(true, isAdmin, email));
-
-                    localStorage.setItem('logged', 1);
-                    isAdmin ? localStorage.setItem('admin', isAdmin) : localStorage.setItem('admin', '');
-                    history.push(ROUTES.HOME);
-
+                localStorage.setItem('logged', 1);
+                isAdmin ? localStorage.setItem('admin', isAdmin) : localStorage.setItem('admin', '');
+                history.push(ROUTES.HOME);
             })
             .catch(error => {
-
                 dispatch(userLogInError(error.message));
-
             });
     };
 };

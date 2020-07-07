@@ -56,12 +56,3 @@ export const deleteQuestion = (title) => ({
     type: TYPES.DELETE_QUESTION,
     payload: title,
 });
-
-export const menuOpen = (flag) => ({
-    type: TYPES.MENU_OPEN,
-    payload: flag,
-});
-
-
-
-

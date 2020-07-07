@@ -1,103 +1,95 @@
-import React, { Component } from 'react';
-import { Box, TextInput, Grommet, Button, Text } from 'grommet';
-import './signup.scss';
-import {customTheme} from '../groomet-themes';
+import React  from 'react';
+import { Form, Input, Button } from 'antd';
 
+export default function SignUpPage (props) {
 
-const INITIAL_STATE = {
-    email: '',
-    password: '',
-    confirmPassword: '',
-};
+    const { onSubmit, error, history, firebase } = props;
 
-export default class SignUpPage extends Component {
+    return (
 
-    constructor(props) {
-        super(props);
-        this.state = { ...INITIAL_STATE };
-        this.fb = this.props.firebase;
-    }
-
-    onChange = event => {
-        this.setState({ [event.target.name]: event.target.value });
-    };
-
-    render() {
-        const { email, password, confirmPassword } = this.state;
-
-        const isInvalid =
-            password !== confirmPassword ||
-            password === '' ||
-            email === '';
-
-        const { onSubmit, error, history } = this.props;
-
-
-        return (
-            <Grommet theme={customTheme}>
-                <Box
-                    direction="row-responsive"
-                    justify="center"
-                    align="center"
-                    pad="xlarge"
-                    background="light"
-                    gap="medium"
+        <div className="alignCenter">
+            <h1>Sign Up</h1>
+            <Form
+                className="auth"
+                size="middle"
+                onFinish={(values) => onSubmit(values, firebase, history)}
+            >
+                <Form.Item
+                    className="sign__input"
+                    name="email"
+                    required="true"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please input your email!',
+                        },
+                        {
+                            type: 'email',
+                            message: 'The input is not valid E-mail!',
+                        },
+                    ]}
                 >
-                    <Box align='center'
-                         width='medium'
-                         justify='center'
-                         pad='large'
-                         alignContent='center'
-                         background="light-2">
-                        <h1>Sign Up</h1>
+                    <Input
+                        placeholder="Email"
+                    />
+                </Form.Item>
 
-                        <form  onSubmit={(event) => onSubmit(event, email, password, this.fb, history)}>
-                            <TextInput
-                                className="sign__input"
-                                value={email}
-                                name='email'
-                                placeholder='Email'
-                                size='medium'
-                                margin="small"
-                                onChange={this.onChange}
-                            />
-                            <TextInput
-                                className="sign__input"
-                                value={password}
-                                name='password'
-                                placeholder='Password'
-                                size='medium'
-                                margin="small"
-                                type="password"
-                                onChange={this.onChange}
-                            />
-                            <TextInput
-                                className="sign__input"
-                                value={confirmPassword}
-                                name='confirmPassword'
-                                placeholder='Confirm password'
-                                size='medium'
-                                margin="small"
-                                type="password"
+                <Form.Item
+                    className="sign__input"
+                    name='password'
+                    required="true"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please input your password!',
+                        }
+                    ]}
+                >
+                    <Input.Password
+                        placeholder='Password'
+                    />
+                </Form.Item>
 
-                                onChange={this.onChange}
-                            />
-                            <Button primary
-                                    type="submit"
-                                    label="Sign Up"
-                                    margin="small"
-                                    disabled={isInvalid}
-                            />
-                            <Text>
-                                {<p>{error}</p>}
-                            </Text>
-                        </form>
+                <Form.Item
+                    className="sign__input"
+                    name='confirmPassword'
+                    required="true"
+                    dependencies={['password']}
+                    validateTrigger="onBlur"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please input your password!',
+                        },
+                        ({ getFieldValue }) => ({
+                            validator(rule, value) {
+                                if (!value || getFieldValue('password') === value) {
+                                    return Promise.resolve();
+                                }
 
-                    </Box>
-                </Box>
-            </Grommet>
-        )
-    }
+                                return Promise.reject('The two passwords that you entered do not match!');
+                            },
+                        }),
+                    ]}
+                >
+                    <Input.Password
+                        placeholder='Confirm password'
+                    />
+                </Form.Item>
+
+                <Button
+                    type="primary"
+                    htmlType="submit"
+                >
+                    Sign Up
+                </Button>
+                <p>
+                    {error}
+                </p>
+            </Form>
+        </div>
+
+    )
 }
 
 

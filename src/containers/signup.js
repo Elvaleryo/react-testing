@@ -20,9 +20,8 @@ const mapStateToProps = (store) => {
 const mapDispatchToProps = (dispatch) => {
     return {
 
-        onSubmit: (e,email,password,fb,history) => {
-            e.preventDefault();
-            dispatch(signUp(email,password,fb,history));
+        onSubmit: (values, fb, history) => {
+            dispatch(signUp(values.email, values.password, fb, history));
         },
 
     }

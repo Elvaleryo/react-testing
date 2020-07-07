@@ -1,19 +1,12 @@
 .nav {
-  &__show {
-    padding: 10px;
-  }
-  &__close {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 10px;
-    transform: translateX(100%);
-    cursor: pointer;
-  }
   &__wrap {
-    span,
-    a {
-      display: block;
-    }
+    margin-right: 200px;
+  }
+
+  &__signout {
+    padding-left: 24px;
+    height: 40px;
+    line-height: 40px;
+    margin: 4px 0 8px;
   }
 }

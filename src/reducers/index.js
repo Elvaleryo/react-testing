@@ -6,7 +6,6 @@ export const initialState = {
     error: false,
     errorSignUp: false,
     user: '',
-    menuOpen: false,
     questions: [],
     tempAnswers: [
             {
@@ -59,8 +58,6 @@ export function rootReducer(state = initialState, action) {
             return {...state, testResult: action.score, selectedAnswersCount: action.answersCount,userAnswers: state.userAnswers.concat(userAnswer), selectedAnswers: []};
         case TYPES.DELETE_QUESTION:
             return { ...state,questions: state.questions.filter((item, i) => item.title !== action.payload)};
-        case TYPES.MENU_OPEN:
-            return { ...state, menuOpen: action.payload};
         default:
             return state;
     }

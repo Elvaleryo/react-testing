@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-import {Box, Button, Text} from "grommet/es6";
-
+import { Button } from 'antd';
 
 
 export default class SignOutButton extends Component {
@@ -12,13 +11,11 @@ export default class SignOutButton extends Component {
     }
     render() {
         return(
-            <Button onClick={() => this.signOut(this.fb,this.history)}
-                hoverIndicator={{ background: 'light-5' }}>
-                <Box pad={{ horizontal: 'medium', vertical: 'small' }}>
-                    <Text size='large'>
-                        Sign Out
-                    </Text>
-                </Box>
+            <Button
+                onClick={() => this.signOut(this.fb,this.history)}
+                type="primary"
+                ghost="true">
+                Sign Out
             </Button>
         )
     }
