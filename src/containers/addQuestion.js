@@ -7,9 +7,9 @@ import * as ROUTES from "../constants/routes";
 import uuidv4 from 'uuid/v4';
 
 
-const mapStateToProps = (store, ownProps) => {
+const mapStateToProps = (store) => {
     return {
-        answers: store.tempAnswers,
+        answers: store.newAnswers,
     }
 };
 
@@ -21,29 +21,21 @@ function validate(obj) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSubmit: (e,question,answers,history) => {
-            e.preventDefault();
+        onSubmit: (values, answers, history) => {
             let key = uuidv4();
 
             let questionObj = {
-                key: key,
-                title: question,
+                id: `question-${key}`,
+                title: values.question,
                 answers: answers,
             };
 
             if (!validate(questionObj)) {
-                let currentQuestions = !!localStorage.getItem('state') ? JSON.parse(localStorage.getItem('state')).questions : [];
-                currentQuestions.push(questionObj);
-                dispatch(saveQuestion(question,key));
+                dispatch(saveQuestion(questionObj));
                 history.push(ROUTES.QUESTIONS_LIST);
             }
-
         },
     };
 };
 
-
 export const AddQuestionPage = connect(mapStateToProps, mapDispatchToProps)(addQuestionsForm);
-
-
-

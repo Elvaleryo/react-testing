@@ -8,7 +8,6 @@ import SignIn from '../components/signin';
 import { withFirebase } from '../firebase';
 
 
-
 const mapStateToProps = (store) => {
     return {
         error: store.error,

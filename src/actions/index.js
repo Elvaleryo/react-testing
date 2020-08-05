@@ -9,10 +9,9 @@ export const userAuth = (auth,admin,user,) => ({
     user: user,
 });
 
-export const saveQuestion = (question, key) => ({
+export const saveQuestion = (question) => ({
     type:    TYPES.SAVE_QUESTION,
-    question: question,
-    key: key,
+    payload: question,
 });
 
 export const addAnswer = (answer) => ({
@@ -20,39 +19,29 @@ export const addAnswer = (answer) => ({
     payload: answer,
 });
 
-export const deleteAnswer = (answer) => ({
-    type: TYPES.DEL_ANSWER,
-    payload: answer,
+export const deleteAnswer = (index) => ({
+    type: TYPES.DELETE_ANSWER,
+    payload: index,
 });
 
-export const changeAnswer = (val,id) => ({
+export const changeAnswer = (value, id) => ({
     type: TYPES.CHANGE_ANSWER,
-    value: val,
+    value: value,
     id: id,
 });
 
-export const chooseAnswer = (checked,id) => ({
+export const chooseAnswer = (id) => ({
     type: TYPES.CHOOSE_ANSWER,
-    checked: checked,
     id: id,
 });
 
-export const checkAnswer = (answer) => ({
-    type: TYPES.CHECK_ANSWER,
-    payload: answer,
-});
-
-
-export const submitAnswers = (score,count,key,answers,date) => ({
+export const submitAnswers = (score, userAnswers) => ({
     type: TYPES.SUBMIT_ANSWERS,
-    answersCount: count,
-    key: key,
-    answers: answers,
-    date: date,
     score: score,
+    userAnswers: userAnswers,
 });
 
-export const deleteQuestion = (title) => ({
+export const deleteQuestion = (id) => ({
     type: TYPES.DELETE_QUESTION,
-    payload: title,
+    payload: id,
 });

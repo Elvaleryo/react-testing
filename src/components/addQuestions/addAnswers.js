@@ -1,18 +1,19 @@
 import React, {Component} from 'react';
-import {TextInput, RadioButton} from 'grommet';
-import './signin.scss';
 
-import {FormAdd, FormClose} from 'grommet-icons';
-
+import { Button, Form, Input, Radio } from 'antd';
+import { PlusCircleOutlined, CloseOutlined } from '@ant-design/icons';
 
 export default class AddAnswerForm extends Component {
 
     constructor(props) {
         super(props);
-        this.delAnswer = this.props.delAnswer;
+        this.deleteAnswer = this.props.delAnswer;
         this.onChange = this.props.onChange;
         this.addNewAnswer = this.props.addNewAnswer;
         this.onChecked = this.props.onChecked;
+        this.state = {
+            value: 1,
+        };
     }
 
     render() {
@@ -22,43 +23,54 @@ export default class AddAnswerForm extends Component {
             count,
         } = this.props;
 
+        const onChangeRadio = (e) => {
+            let radioValue = e.target.value;
+            this.setState({
+                value: radioValue,
+            });
+            this.onChecked(radioValue);
+        };
 
-        let answList = answersList.map((answ, index) => {
+        let answersListTmpl = !!answersList.length && answersList.map((answer) => {
             return  (
-                <div key={answ.key} className="add-question__answer-wrap">
-                    <div className="add-question__check">
-                        <RadioButton
-                            name='checkbox'
-                            checked={!!answ.correct}
-                            label=''
-                            onChange={(e) => this.onChecked(e, answ.key)}
+                <div className="question__answer-wrap"
+                    key={answer.id}>
+                    <Radio className="question__check"
+                    value={answer.id}/>
+                    <Form.Item
+                        className="question__input"
+                        onChange={(e) => this.onChange(e, answer.id)}
+                        required="true"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please enter the answer',
+                            },
+                        ]}
+                    >
+                        <Input
+                            placeholder="Answer"
                         />
-                    </div>
-                    <TextInput
-                        className="add-question__input"
-                        value={answ.value}
-                        id={answ.id}
-                        name={answ.id}
-                        placeholder='Answers'
-                        size='medium'
-                        margin="small"
-                        onChange={(e) => this.onChange(e, answ.key)}
-                    />
-                    <FormClose className="add-question__del-ico" onClick={() => this.delAnswer(index,count)}/>
+                    </Form.Item>
+                    <CloseOutlined
+                        className="question__del-ico"
+                        onClick={() => this.deleteAnswer(answer.id, count)}/>
                 </div>
             )
-
         });
 
-
-
         return (
-            <div className="add-question__cont">
-                <div className="add-question__add-new" onClick={() => this.addNewAnswer(count)}>
-                    <FormAdd className="add-questions__add-ico" />
-                    <p>Add new answer variation</p>
-                </div>
-                {answList}
+            <div className="question__answers-wrap">
+                <Button
+                    className="question__add-new"
+                    onClick={() => this.addNewAnswer(count)}
+                    type="link"
+                    icon={<PlusCircleOutlined />}>
+                    Add new answer variation
+                </Button>
+                <Radio.Group onChange={onChangeRadio}  value={this.state.value}>
+                    {!!answersListTmpl && answersListTmpl}
+                </Radio.Group>
             </div>
         )
     }

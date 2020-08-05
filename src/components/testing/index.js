@@ -1,84 +1,84 @@
 import React, { Component } from 'react';
-import { Box, Grommet, Button, RadioButton } from 'grommet';
-import {customTheme} from '../groomet-themes';
 import './index.scss';
-import uuidv4 from 'uuid/v4';
+
+import { Form, Button, Radio } from 'antd';
 
 
-export default class Testing extends Component {
+const INITIAL_STATE = {
+    userAnswers: {},
+};
+
+export default class addQuestionsForm extends Component {
 
     constructor(props) {
         super(props);
-        this.submitAnswers = this.props.submitAnswers;
-        this.onChecked = this.props.onChecked;
+        this.onSubmit = this.props.onSubmit;
+        this.state = { ...INITIAL_STATE };
     }
+
+    onChangeRadio = (questionId, answerId,answerCorrect) => {
+        this.setState(prevState => {
+            return {
+                userAnswers: {
+                    ...prevState.userAnswers,
+                    [questionId]: {
+                        isCorrect: answerCorrect,
+                        answerId: answerId
+                    }
+                }
+            }
+        });
+    };
 
     render() {
 
-        const {answersList, selected, history} = this.props;
+        const { questions, history } = this.props;
+        const userAnswers = this.state.userAnswers;
 
-        let answList = answersList.map((question, i) => {
+        let questionsTmpl = questions.map((question) => {
+            let answersTmpl = question.answers.map((answer) => {
+                let isChecked = userAnswers[question.id] && userAnswers[question.id].answerId === answer.id;
+                return  (
+                    <div className="question__answer-wrap"
+                        key={answer.id}>
+                        <Radio className="question__check"
+                            checked={isChecked}
 
-
-            const currentSelected = selected.length ? selected.find(item => item.questionIndex === i) : false;
-
-            const tempChecked = currentSelected ? currentSelected.answerIndex : false;
-
-            let answs = question.answers.map((item) => {
-                let key = uuidv4();
-                return (
-                    <div key={key} className="add-questions__answer">
-                        <RadioButton
-                            name='prop'
-                            checked={tempChecked === item.key}
-                            label={item.value}
-                            onChange={(e) => this.onChecked(i,question.key, item.key, item.correct)}
-                        />
+                            onChange={() => this.onChangeRadio(question.id, answer.id, answer.correct)}>
+                                {answer.value}
+                        </Radio>
                     </div>
-                );
+                )
             });
-            let key = uuidv4();
-
             return (
-                <div key={key} className="add-questions__question-wrap">
-                    <h1>{question.title}</h1>
-                    {answs}
+                <div key={question.id} className="questions__wrap">
+
+                    <h1 className="questions__title">
+                        {question.title}
+                    </h1>
+                    {answersTmpl}
                 </div>
             );
         });
 
         return (
-
-            <Grommet theme={customTheme}>
-                <Box
-                    direction="row-responsive"
-                    justify="center"
-                    align="center"
-                    pad="xlarge"
-                    background="light"
-                    gap="medium"
+            <div className="alignCenter question">
+                <Form
+                    className="question__form"
+                    size="middle"
+                    onFinish={() => this.onSubmit(this.state.userAnswers, history)}
                 >
-                    <Box align='center'
-                         width='medium'
-                         justify='center'
-                         pad='large'
-                         alignContent='center'
-                         background="light-2">
-                        <form  onSubmit={(event) => this.submitAnswers(event,selected,answersList.length,history)}>
+                    {questionsTmpl}
 
-                            {answList}
+                    <Button
+                        type="primary"
+                        htmlType="submit"
+                    >
+                        Save
+                    </Button>
 
-                            <Button primary
-                                    type="submit"
-                                    label="Save"
-                                    margin="small"
-                            />
-                        </form>
-                    </Box>
-                </Box>
-            </Grommet>
+                </Form>
+            </div>
         )
     }
 }
-
-

@@ -22,9 +22,7 @@ export function AdminNav() {
             <Menu.Item key="4">
                 <Link to={ROUTES.QUESTIONS_LIST}>All questions</Link>
             </Menu.Item>
-            <Menu.Item key="5">
-                <Link to={ROUTES.STATISTIC}>Statistic</Link>
-            </Menu.Item>
+
             <Menu.Item key="6" className="nav__signout">
                 <SignOutButton/>
             </Menu.Item>

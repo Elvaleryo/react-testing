@@ -1,23 +1,16 @@
-import React, {Component} from "react";
+import React from "react";
 import { Button } from 'antd';
 
+export default function SignOutButton(props) {
+    const { signOut, firebase, history} = props;
 
-export default class SignOutButton extends Component {
-    constructor(props) {
-        super(props);
-        this.signOut = this.props.signOut;
-        this.fb = this.props.firebase;
-        this.history = this.props.history;
-    }
-    render() {
-        return(
-            <Button
-                onClick={() => this.signOut(this.fb,this.history)}
-                type="primary"
-                ghost="true">
-                Sign Out
-            </Button>
-        )
-    }
+    return(
+        <Button
+            onClick={() => signOut(firebase, history)}
+            type="primary"
+            ghost="true">
+            Sign Out
+        </Button>
+    )
 };
 

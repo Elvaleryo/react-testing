@@ -1,0 +1,37 @@
+.question {
+  width: 60%;
+  margin: 0 auto;
+
+  &__add-new {
+    margin: 20px 0;
+  }
+
+  &__answers-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__answer-wrap {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  &__input.ant-form-item {
+    margin: 0 20px;
+  }
+
+  &__check.ant-radio-wrapper {
+    position: absolute;
+    left: 10px;
+    transform: translateX(-100%);
+  }
+
+  &__del-ico {
+    position: absolute;
+    right: 10px;
+    transform: translateX(100%);
+    cursor: pointer;
+  }
+}

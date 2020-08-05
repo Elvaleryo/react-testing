@@ -16,9 +16,6 @@ export function UserNav() {
             <Menu.Item key="2">
                 <Link to={ROUTES.START_TESTING}>Start testing</Link>
             </Menu.Item>
-            <Menu.Item key="3">
-                <Link to={ROUTES.STATISTIC}>Statistic</Link>
-            </Menu.Item>
             <div className="nav__signout">
                 <SignOutButton/>
             </div>

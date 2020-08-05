@@ -7,18 +7,10 @@ export const initialState = {
     errorSignUp: false,
     user: '',
     questions: [],
-    tempAnswers: [
-            {
-                key: 0,
-                id: 'answer-0',
-                value: '',
-                correct: false,
-            }
-    ],
+    newAnswers: [],
     selectedAnswers: [],
     userAnswers: [],
-    selectedAnswersCount: 0,
-    testResult : 0,
+    score : 0,
 };
 
 
@@ -39,25 +31,22 @@ export function rootReducer(state = initialState, action) {
             return { ...state, errorSignUp: action.payload };
 
         case TYPES.SAVE_QUESTION:
-            let newQuestion = {key:action.key, title: action.question, answers: state.tempAnswers};
-            return { ...state, questions: state.questions.concat(newQuestion), tempAnswers: initialState.tempAnswers };
+            return { ...state, questions: state.questions.concat(action.payload), newAnswers: []};
         case TYPES.ADD_ANSWER:
-            return { ...state,tempAnswers: state.tempAnswers.concat(action.payload) };
-        case TYPES.DEL_ANSWER:
-            return { ...state,tempAnswers: state.tempAnswers.filter((item, i) => item.key !== action.payload)};
+            return { ...state, newAnswers: state.newAnswers.concat(action.payload) };
+        case TYPES.DELETE_ANSWER:
+            return { ...state,newAnswers: state.newAnswers.filter((item) => item.id !== action.payload)};
         case TYPES.CHANGE_ANSWER:
-            return {...state,tempAnswers: state.tempAnswers.map(answer => answer.key === action.id ? {...answer, value: action.value} : answer)};
+            return {...state,newAnswers: state.newAnswers.map(answer => answer.id === action.id ? {...answer, value: action.value} : answer)};
         case TYPES.CHOOSE_ANSWER:
-            let defaultChecked = state.tempAnswers.map(answer => answer.correct === true ? {...answer, correct: false} : answer);
-            return {...state,tempAnswers: defaultChecked.map(answer => answer.key === action.id ? {...answer, correct: action.checked} : answer)};
-        case TYPES.CHECK_ANSWER:
-            let tempAnswer = state.selectedAnswers.filter((item, i) => item.questionIndex !== action.payload.questionIndex);
-            return { ...state, selectedAnswers: tempAnswer.concat(action.payload) };
+            let defaultChecked = state.newAnswers.map(answer => answer.correct === true ? {...answer, correct: false} : answer);
+            return {...state, newAnswers: defaultChecked.map(answer => answer.id === action.id ? {...answer, correct: true} : answer)};
+
         case TYPES.SUBMIT_ANSWERS:
-            let userAnswer = {userAnswerKey: action.key,user: state.user,date: action.date,score: action.score, answers: [action.answers]};
-            return {...state, testResult: action.score, selectedAnswersCount: action.answersCount,userAnswers: state.userAnswers.concat(userAnswer), selectedAnswers: []};
+            return {...state, score: action.score, userAnswers: action.userAnswers};
+
         case TYPES.DELETE_QUESTION:
-            return { ...state,questions: state.questions.filter((item, i) => item.title !== action.payload)};
+            return { ...state,questions: state.questions.filter((item) => item.id !== action.payload)};
         default:
             return state;
     }

@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
-import { Box, Grommet, Button, RadioButton } from 'grommet';
-import { FormClose} from 'grommet-icons';
-
-import {customTheme} from '../groomet-themes';
 import './index.scss';
 import * as ROUTES from "../../constants/routes";
-import uuidv4 from 'uuid/v4';
+
+import { Form, Input, Button, Radio } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 
 
-export default class Questions extends Component {
+export default class addQuestionsForm extends Component {
 
     constructor(props) {
         super(props);
-        this.submitAnswers = this.props.submitAnswers;
-        this.delQuestion = this.props.delQuestion;
+        this.deleteQuestion = this.props.delQuestion;
     }
 
     render() {
-
 
         const { questions, history } = this.props;
 
@@ -26,61 +22,57 @@ export default class Questions extends Component {
             history.push(ROUTES.ADD_QUESTIONS);
         };
 
-        let answList = questions.map((question, i) => {
-            let answs = question.answers.map((item) => {
-                let key = uuidv4();
-                return (
-                    <div key={key} className="questions__answer">
-                        <RadioButton
-                            name='prop'
-                            checked={item.correct}
-                            label={item.value}
-                            disabled={true}
-                        />
+        let questionsTmpl = questions.map((question) => {
+            let answersTmpl = question.answers.map((answer) => {
+                return  (
+                    <div className="question__answer-wrap"
+                        key={answer.id}>
+                        <Radio className="question__check"
+                            checked={answer.correct}
+                        disabled={true}/>
+                        <Form.Item
+                            className="question__input"
+                        >
+                            <Input
+                                placeholder="Answer"
+                                value={answer.value}
+                                disabled={true}
+                            />
+                        </Form.Item>
                     </div>
-                );
+                )
             });
-            let key = uuidv4();
             return (
-                <div key={key} className="questions__wrap">
-                    <FormClose className="questions__del-ico" onClick={() => this.delQuestion(question.title)}/>
-                    <h1 className="questions__title">{question.title}</h1>
-                    {answs}
+                <div key={question.id} className="questions__wrap">
+                    <CloseOutlined
+                        className="questions__del-ico"
+                        onClick={() => this.deleteQuestion(question.id)}/>
+                    <h1 className="questions__title">
+                        {question.title}
+                    </h1>
+                    {answersTmpl}
                 </div>
             );
         });
 
         return (
-
-            <Grommet theme={customTheme}>
-                <Box
-                    direction="row-responsive"
-                    justify="center"
-                    align="center"
-                    pad="xlarge"
-                    background="light"
-                    gap="medium"
+            <div className="alignCenter question">
+                <h1>All questions</h1>
+                <Form
+                    className="question__form"
+                    size="middle"
                 >
-                    <Box align='center'
-                         width='medium'
-                         justify='center'
-                         pad='large'
-                         alignContent='center'
-                         background="light-2">
+                    {questionsTmpl}
 
-                            {answList}
-
-                            <Button primary
-                                    type="submit"
-                                    label="Add new"
-                                    margin="small"
-                                    onClick={(e) => _onClick(e)}
-                            />
-                    </Box>
-                </Box>
-            </Grommet>
+                    <Button
+                        type="primary"
+                        htmlType="submit"
+                        onClick={(e) => _onClick(e)}
+                    >
+                        Add new
+                    </Button>
+                </Form>
+            </div>
         )
     }
 }
-
-

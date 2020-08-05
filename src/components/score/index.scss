@@ -17,3 +17,11 @@
     }
   }
 }
+
+.question {
+  &__answer-wrap.correct {
+    .question__check {
+      background-color: rgba(0,128,0,.2);
+    }
+  }
+}

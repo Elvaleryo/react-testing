@@ -5,6 +5,5 @@ export const ADD_QUESTIONS = '/add-questions';
 export const START_TESTING = '/testing';
 export const SCORE = '/score';
 export const QUESTIONS_LIST = '/all-question';
-export const STATISTIC = '/statistic';
 
 

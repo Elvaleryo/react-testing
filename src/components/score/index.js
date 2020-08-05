@@ -1,83 +1,63 @@
-import React, { Component } from 'react';
-import {Box, Grommet, Button, RadioButton} from 'grommet';
-import {customTheme} from '../groomet-themes';
-import uuidv4 from "uuid/v4";
-
+import React  from 'react';
 import './index.scss';
+import * as ROUTES from "../../constants/routes";
+
+import { Form, Button, Radio } from 'antd';
+import classNames from 'classnames';
 
 
-export default class Score extends Component {
+export default function addQuestionsForm(props) {
 
+    const { userAnswers, score, questions, history } = props;
 
+    let _onClick = () => {
+        history.push(ROUTES.START_TESTING);
+    };
 
-    render() {
+    let fractionalScore = `${score}/${questions.length}`;
 
-        const { score , onClick, questions, userAnswers, history } = this.props;
-
-        let answList = questions.map((question, i) => {
-            let answs = question.answers.map((item) => {
-                let key = uuidv4();
-                let userChoose = userAnswers[userAnswers.length-1].answers[0][i].answerIndex;
-                let userClassName = userChoose === item.key;
-                let correctClassName = item.correct ? 'correct': '';
-                return (
-                    <div key={key} className="questions__answer">
-                        <div className={correctClassName}>
-                            <RadioButton
-                                name='prop'
-                                checked={userClassName}
-                                label={item.value}
-                                disabled={true}
-                            />
-                        </div>
-
-                    </div>
-                );
-            });
-            let key = uuidv4();
-            return (
-                <div key={key} className="questions__wrap">
-                    <h1 className="questions__title">{question.title}</h1>
-                    {answs}
+    let questionsTmpl = questions.map((question) => {
+        let answersTmpl = question.answers.map((answer) => {
+            let isChecked = userAnswers[question.id].answerId === answer.id;
+            return  (
+                <div className={classNames('question__answer-wrap ', {'correct' : answer.correct})}
+                    key={answer.id}>
+                    <Radio className="question__check"
+                        checked={isChecked}
+                        disabled={true}>
+                        {answer.value}
+                    </Radio>
                 </div>
-            );
+            )
         });
-
         return (
+            <div key={question.id} className="questions__wrap">
+                <h1 className="questions__title">
+                    {question.title}
+                </h1>
+                {answersTmpl}
+            </div>
+        );
+    });
 
-            <Grommet theme={customTheme}>
-                <Box
-                    direction="row-responsive"
-                    justify="center"
-                    align="center"
-                    pad="xlarge"
-                    background="light"
-                    gap="medium"
+    return (
+        <div className="alignCenter question">
+            <h1>Your score {fractionalScore}</h1>
+            <Form
+                className="question__form"
+                size="middle"
+            >
+                {questionsTmpl}
+
+                <Button
+                    type="primary"
+                    htmlType="submit"
+                    onClick={_onClick}
                 >
-                    <Box align='center'
-                         width='medium'
-                         justify='center'
-                         pad='large'
-                         alignContent='center'
-                         background="light-2">
+                    Try again
+                </Button>
 
-                            <h1>YOUR SCORE</h1>
-                            <h2>{score} </h2>
-
-                            {answList}
-
-
-                            <Button primary
-                                    type="submit"
-                                    label="Try again"
-                                    margin="small"
-                                    onClick={(e) => {onClick(e,history)}}
-                            />
-                    </Box>
-                </Box>
-            </Grommet>
-        )
-    }
-}
-
-
+            </Form>
+        </div>
+    )
+};

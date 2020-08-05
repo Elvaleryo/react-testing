@@ -1,7 +1,5 @@
 import { connect } from 'react-redux';
-
 import Questions from '../components/questionList';
-
 import { deleteQuestion } from '../actions';
 
 
@@ -14,8 +12,8 @@ const mapStateToProps = (store) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        delQuestion: (title) => {
-            dispatch(deleteQuestion(title));
+        delQuestion: (id) => {
+            dispatch(deleteQuestion(id));
         }
     };
 };

@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
-import { checkAnswer, submitAnswers } from '../actions';
+import { submitAnswers } from '../actions';
 import Testing from '../components/testing';
 import * as ROUTES from "../constants/routes";
-import uuidv4 from 'uuid/v4';
 
 
 
@@ -11,37 +11,21 @@ import uuidv4 from 'uuid/v4';
 const mapStateToProps = (store) => {
 
     return {
-        answersList: store.questions,
-        selected: store.selectedAnswers,
+        questions: store.questions
     }
 };
 
 
-const mapDispatchToProps = (dispatch,store) => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        submitAnswers: (e,answers,questionsCount,history) => {
-            e.preventDefault();
-            let key = uuidv4();
-
-            if (questionsCount === answers.length) {
-                let score = answers.filter(item => item.correct === true);
-                let answersCount = answers.length;
-                let date = new Date().toLocaleString();
-                let scoreStr = `${score.length.toString()}/${answersCount.toString()}`;
-                dispatch(submitAnswers(scoreStr,answersCount,key,answers,date));
-                history.push(ROUTES.SCORE);
+        onSubmit: (userAnswers, history) => {
+            if(_.isEmpty(userAnswers)) {
+                return;
             }
-        },
-
-        onChecked: (questionIndex, questionKey, answerIndex, correct) => {
-            dispatch(checkAnswer({
-                questionKey: questionKey,
-                questionIndex: questionIndex,
-                answerIndex: answerIndex,
-                correct: correct,
-            }));
+            let score =_.filter(userAnswers, userAnswer => userAnswer.isCorrect === true).length;
+            dispatch(submitAnswers(score, userAnswers));
+            history.push(ROUTES.SCORE);
         }
-
     };
 };
 

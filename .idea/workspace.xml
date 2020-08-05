@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d84b74c-558a-40d6-bc03-6f6d80948feb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/navigation/adminNav.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/navigation/userNav.js" afterDir="false" />
+    <list default="true" id="4d84b74c-558a-40d6-bc03-6f6d80948feb" name="Default Changelist" comment="REFACTORING&amp;REDESIGN(Ant) - finished new design">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/common.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/common.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/addQuestions/addAnswers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/addQuestions/addAnswers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/addQuestions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/addQuestions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/addQuestions/signin.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/addQuestions/index.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/app/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/homeGuest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/homeGuest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/homeUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/homeUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/groomet-themes.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navigation/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navigation/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/signin/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/signin/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/signin/signin.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navigation/adminNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation/adminNav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navigation/userNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation/userNav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/questionList/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/questionList/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/score/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/score/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/score/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/score/index.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/signout/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/signout/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/signup/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/signup/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/navigation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/statistic/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/testing/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/testing/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/addAnswers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/addAnswers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/addQuestion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/addQuestion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/questionList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/questionList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/score.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/score.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/signin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/signin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/statistic.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/testing.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/testing.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -125,7 +131,15 @@
       <workItem from="1588765151809" duration="20818000" />
       <workItem from="1589287422910" duration="3509000" />
       <workItem from="1593685967014" duration="10884000" />
-      <workItem from="1594111355219" duration="6557000" />
+      <workItem from="1594111355219" duration="13330000" />
+      <workItem from="1594203594534" duration="13107000" />
+      <workItem from="1594275175424" duration="1928000" />
+      <workItem from="1594306627416" duration="2827000" />
+      <workItem from="1595534462965" duration="1562000" />
+      <workItem from="1596200008843" duration="4081000" />
+      <workItem from="1596458119425" duration="13281000" />
+      <workItem from="1596557678120" duration="12770000" />
+      <workItem from="1596616012060" duration="13003000" />
     </task>
     <task id="LOCAL-00001" summary="REFACTORING&amp;REDESIGN(Ant) - home, sign in">
       <created>1588705698319</created>
@@ -134,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588705698319</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="REFACTORING&amp;REDESIGN(Ant) - sign up, navigation">
+      <created>1594149208354</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1594149208354</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,7 +186,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="REFACTORING&amp;REDESIGN(Ant) - home, sign in" />
-    <option name="LAST_COMMIT_MESSAGE" value="REFACTORING&amp;REDESIGN(Ant) - home, sign in" />
+    <MESSAGE value="REFACTORING&amp;REDESIGN(Ant) - sign up, navigation" />
+    <MESSAGE value="REFACTORING&amp;REDESIGN(Ant) - finished new design" />
+    <option name="LAST_COMMIT_MESSAGE" value="REFACTORING&amp;REDESIGN(Ant) - finished new design" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -177,8 +200,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/app/index.js</url>
-          <line>23</line>
+          <line>22</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/actions/index.js</url>
+          <line>35</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/signout/index.js</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

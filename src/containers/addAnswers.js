@@ -5,50 +5,52 @@ import AddAnswerForm from '../components/addQuestions/addAnswers';
 import uuidv4 from 'uuid/v4';
 
 
-
-const mapStateToProps = (store, ownProps) => {
+const mapStateToProps = (store) => {
     return {
-        count: store.tempAnswers.length - 1,
-        answersList: store.tempAnswers,
+        count: store.newAnswers.length - 1,
+        answersList: store.newAnswers,
     }
 };
 
-const mapDispatchToProps = (dispatch,store) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         addNewAnswer: (count) => {
-            let key = uuidv4();
             let newAnswersCount = ++count;
-            if (newAnswersCount < 4) {
-                let id = `answer-${count}`;
-                let answerRes = {
-                    key: key,
-                    id: id,
-                    value: '',
-                    correct: false,
-                };
-                dispatch(addAnswer(answerRes));
+            if (newAnswersCount >= 4) {
+                return;
             }
+
+            let key = uuidv4();
+
+            let answer = {
+                id: `answer-${key}`,
+                value: '',
+                correct: false,
+            };
+
+            dispatch(addAnswer(answer));
         },
 
-        delAnswer: (id,count) => {
+        delAnswer: (index, count) => {
             if (count > 0) {
-                dispatch(deleteAnswer(+id));
+                dispatch(deleteAnswer(index));
             }
         },
 
-        onChange: (e, index) => {
-            dispatch(changeAnswer(e.target.value, index));
+        onChange: (e, id) => {
+            let value = e.target.value;
+            dispatch(changeAnswer(value, id));
         },
 
-        onChecked: (e, index) => {
-            dispatch(chooseAnswer(e.target.checked, index));
+        onChecked: (index) => {
+            dispatch(chooseAnswer(index));
         }
     };
 };
 
 
 
-export const AddAnswerPage = connect(mapStateToProps, mapDispatchToProps)(AddAnswerForm);
+export const AddAnswerView = connect(mapStateToProps, mapDispatchToProps)(AddAnswerForm);
 
 
 
