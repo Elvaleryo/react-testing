@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Button, Form, Input, Radio } from 'antd';
 import { PlusCircleOutlined, CloseOutlined } from '@ant-design/icons';
@@ -16,11 +16,10 @@ export default function AddAnswerForm(props) {
 
     const [radioValue, setRadioValue] = useState(null);
 
-    const onChangeRadio = (e) => {
-        let radioValue = e.target.value;
-        setRadioValue(radioValue);
-        onChecked(e.target.value);
-    };
+    useEffect(() => {
+        onChecked(radioValue);
+    });
+
 
     let answersListTmpl = !!answersList.length && answersList.map((answer) => {
         return  (
@@ -59,7 +58,7 @@ export default function AddAnswerForm(props) {
                 icon={<PlusCircleOutlined />}>
                 Add new answer variation
             </Button>
-            <Radio.Group onChange={onChangeRadio}  value={radioValue}>
+            <Radio.Group onChange={(e) => setRadioValue(e.target.value)}  value={radioValue}>
                 {!!answersListTmpl && answersListTmpl}
             </Radio.Group>
         </div>
