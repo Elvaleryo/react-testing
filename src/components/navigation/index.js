@@ -7,7 +7,6 @@ import {UserNav} from './userNav';
 import { Layout } from 'antd';
 const { Sider } = Layout;
 
-
 export default function SideNavigation(props) {
     const { admin, logged } = props;
     if(!logged) {
@@ -31,5 +30,3 @@ export default function SideNavigation(props) {
         )
     }
 }
-
-

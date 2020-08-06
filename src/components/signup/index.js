@@ -6,7 +6,6 @@ export default function SignUpPage (props) {
     const { onSubmit, error, history, firebase } = props;
 
     return (
-
         <div className="alignCenter">
             <h1>Sign Up</h1>
             <Form
@@ -88,10 +87,5 @@ export default function SignUpPage (props) {
                 </p>
             </Form>
         </div>
-
     )
 }
-
-
-
-

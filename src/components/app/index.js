@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
@@ -19,37 +19,34 @@ import "./index.scss";
 import { Layout } from 'antd';
 const { Header, Content, Footer } = Layout;
 
-
-class App extends Component {
-    render() {
-        return(
-            <Router>
-                <Layout className="site-layout">
-                    <Navigation  />
-                    <Layout>
-                        <Header className="site-layout_background">
-                            Testing
-                        </Header>
-                        <Content className="site-layout_background"
-                            style={{
-                                margin: '24px 16px',
-                                padding: 24,
-                                minHeight: 280,
-                            }}>
-                            <Route exact path={ROUTES.HOME} component={HomePage} />
-                            <Route path={ROUTES.SIGN_UP} component={SignUp} />
-                            <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-                            <Route path={ROUTES.ADD_QUESTIONS} component={AddQuestionPage} />
-                            <Route path={ROUTES.START_TESTING} component={TestingPage} />
-                            <Route path={ROUTES.SCORE} component={ScorePage} />
-                            <Route path={ROUTES.QUESTIONS_LIST} component={QuestionsPage} />
-                        </Content>
-                        <Footer style={{ textAlign: 'center' }}>Testing app ©2020 Created by Valerii Zavaruiev</Footer>
-                    </Layout>
+function App() {
+    return(
+        <Router>
+            <Layout className="site-layout">
+                <Navigation  />
+                <Layout>
+                    <Header className="site-layout_background">
+                        Testing
+                    </Header>
+                    <Content className="site-layout_background"
+                        style={{
+                            margin: '24px 16px',
+                            padding: 24,
+                            minHeight: 280,
+                        }}>
+                        <Route exact path={ROUTES.HOME} component={HomePage} />
+                        <Route path={ROUTES.SIGN_UP} component={SignUp} />
+                        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+                        <Route path={ROUTES.ADD_QUESTIONS} component={AddQuestionPage} />
+                        <Route path={ROUTES.START_TESTING} component={TestingPage} />
+                        <Route path={ROUTES.SCORE} component={ScorePage} />
+                        <Route path={ROUTES.QUESTIONS_LIST} component={QuestionsPage} />
+                    </Content>
+                    <Footer style={{ textAlign: 'center' }}>Testing app ©2020 Created by Valerii Zavaruiev</Footer>
                 </Layout>
-            </Router>
-        )
-    }
+            </Layout>
+        </Router>
+    )
 }
 
 export default withFirebase(App);

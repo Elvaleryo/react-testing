@@ -6,7 +6,6 @@ import * as ROUTES from '../../constants/routes';
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
 
-
 export function UserNav() {
     return(
         <Menu theme="dark" mode="inline">
@@ -22,5 +21,3 @@ export function UserNav() {
         </Menu>
     )
 }
-
-
