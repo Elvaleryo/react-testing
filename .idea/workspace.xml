@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d84b74c-558a-40d6-bc03-6f6d80948feb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/addQuestions/addAnswers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/addQuestions/addAnswers.js" afterDir="false" />
-    </list>
+    <list default="true" id="4d84b74c-558a-40d6-bc03-6f6d80948feb" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +111,7 @@
       <workItem from="1596458119425" duration="13281000" />
       <workItem from="1596557678120" duration="12770000" />
       <workItem from="1596616012060" duration="14528000" />
-      <workItem from="1596733429731" duration="5287000" />
+      <workItem from="1596733429731" duration="7824000" />
     </task>
     <task id="LOCAL-00001" summary="REFACTORING&amp;REDESIGN(Ant) - home, sign in">
       <created>1588705698319</created>
@@ -150,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596748742572</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="REFACTORING - make all components as functions &amp; added hooks">
+      <created>1596749509254</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1596749509254</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

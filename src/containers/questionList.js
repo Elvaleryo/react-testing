@@ -12,7 +12,7 @@ const mapStateToProps = (store) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        delQuestion: (id) => {
+        deleteQuestion: (id) => {
             dispatch(deleteQuestion(id));
         }
     };

@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(addAnswer(answer));
         },
 
-        delAnswer: (index, count) => {
+        deleteAnswer: (index, count) => {
             if (count > 0) {
                 dispatch(deleteAnswer(index));
             }
