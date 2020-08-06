@@ -1,7 +1,4 @@
-You can make tests at admin panel(to login use admin@admin.com pass: rootroot) and see statistics of all users. You can register new user. As user you can make test and see your stats.
-
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+You can loged in as admin(to login use admin@admin.com pass: rootroot). Admin can change questions and answers. You can register your own users and start testing.
 
 ## Available Scripts
 
