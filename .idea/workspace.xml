@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d84b74c-558a-40d6-bc03-6f6d80948feb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/addQuestions/addAnswers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/addQuestions/addAnswers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/addQuestions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/addQuestions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navigation/adminNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation/adminNav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navigation/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navigation/userNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation/userNav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/questionList/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/questionList/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/signin/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/signin/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/signout/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/signout/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/signup/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/signup/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/testing/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/testing/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/firebase/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/firebase/firebase.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -125,7 +113,7 @@
       <workItem from="1596458119425" duration="13281000" />
       <workItem from="1596557678120" duration="12770000" />
       <workItem from="1596616012060" duration="14528000" />
-      <workItem from="1596733429731" duration="3987000" />
+      <workItem from="1596733429731" duration="4523000" />
     </task>
     <task id="LOCAL-00001" summary="REFACTORING&amp;REDESIGN(Ant) - home, sign in">
       <created>1588705698319</created>
@@ -148,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596654542107</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="REFACTORING - make all components as functions &amp; added hooks">
+      <created>1596748252138</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1596748252138</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,7 +176,8 @@
     <MESSAGE value="REFACTORING&amp;REDESIGN(Ant) - home, sign in" />
     <MESSAGE value="REFACTORING&amp;REDESIGN(Ant) - sign up, navigation" />
     <MESSAGE value="REFACTORING&amp;REDESIGN(Ant) - finished new design" />
-    <option name="LAST_COMMIT_MESSAGE" value="REFACTORING&amp;REDESIGN(Ant) - finished new design" />
+    <MESSAGE value="REFACTORING - make all components as functions &amp; added hooks" />
+    <option name="LAST_COMMIT_MESSAGE" value="REFACTORING - make all components as functions &amp; added hooks" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
